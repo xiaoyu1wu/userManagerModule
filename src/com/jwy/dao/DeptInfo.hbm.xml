@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+    <class name="com.jwy.dao.DeptInfo" table="tb_deptinfo" catalog="db_database24">
+        <id name="number" type="java.lang.Integer">
+            <column name="number" />
+            <generator class="native"></generator>
+        </id>
+        <property name="name" type="java.lang.String">
+            <column name="name" length="45" not-null="true">
+                <comment>部门名称</comment>
+            </column>
+        </property>
+        <property name="createDate" type="java.lang.String">
+            <column name="createDate" length="10" not-null="true">
+                <comment>建立日期</comment>
+            </column>
+        </property>
+        <property name="remark" type="java.lang.String">
+            <column name="remark" length="45" not-null="true">
+                <comment>部门介绍</comment>
+            </column>
+        </property>
+    </class>
+</hibernate-mapping>

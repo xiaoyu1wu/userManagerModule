@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app version="2.4" xmlns="http://java.sun.com/xml/ns/j2ee"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://java.sun.com/xml/ns/j2ee 
+	http://java.sun.com/xml/ns/j2ee/web-app_2_4.xsd">
+
+	<!-- spring编码过滤器 -->
+	<filter>
+		<filter-name>encodingFilter</filter-name>
+		<filter-class>org.springframework.web.filter.CharacterEncodingFilter</filter-class>
+		<!-- 编码方式 -->
+		<init-param>
+			<param-name>encoding</param-name>
+			<param-value>gbk</param-value>
+		</init-param>
+		<!-- 强行进行编码转换 -->
+		<init-param>
+			<param-name>forceEncoding</param-name>
+			<param-value>true</param-value>
+		</init-param>
+	</filter>
+	<filter-mapping>
+		<filter-name>encodingFilter</filter-name>
+		<url-pattern>/*</url-pattern>
+		<dispatcher>REQUEST</dispatcher>
+		<dispatcher>FORWARD</dispatcher>
+	</filter-mapping>
+	<servlet>
+		<!-- 定义Servlet名称 -->
+		<servlet-name>dispatcherServlet</servlet-name>
+		<!-- Servlet具体实现类 -->
+		<servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
+		<!-- 初始化上下文对象 -->
+		<init-param>
+			<!-- 参数名称 -->
+			<param-name>contextConfigLocation</param-name>
+			<!-- 加载配置文件 -->
+			<param-value>/WEB-INF/applicationContext.xml</param-value>
+		</init-param>
+		<!-- 设置启动的优先级 -->
+		<load-on-startup>1</load-on-startup>
+	</servlet>
+	<!-- 采用通配符映射所有以html类型的请求 -->
+	<servlet-mapping>
+		<servlet-name>dispatcherServlet</servlet-name>
+		<url-pattern>*.html</url-pattern>
+	</servlet-mapping>
+	<welcome-file-list>
+		<welcome-file>forworld.jsp</welcome-file>
+	</welcome-file-list>
+</web-app>
